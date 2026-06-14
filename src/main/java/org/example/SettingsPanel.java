@@ -104,7 +104,7 @@ public class SettingsPanel extends JPanel {
                 bottomPanel.setBackground(new Color(43, 43, 43));
 
                 JButton checkSolutionBtn = createButton("Check Solution");
-                JButton speedUpBtn = createButton("Speed Up ⏩");
+                JButton speedUpBtn = createButton("Speed Up");
                 speedUpBtn.setEnabled(false);
 
                 speedUpBtn.addActionListener(ev -> {
