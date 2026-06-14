@@ -23,7 +23,6 @@ public class SettingsPanel extends JPanel {
         this.setLayout(new BorderLayout(10, 10));
         this.setBackground(new Color(43, 43, 43));
 
-        // --- אזור עליון: כותרות ---
         JPanel topPanel = new JPanel(new GridLayout(2, 1));
         topPanel.setOpaque(false);
         topPanel.setBorder(new EmptyBorder(15, 0, 10, 0));
@@ -33,7 +32,6 @@ public class SettingsPanel extends JPanel {
         topPanel.add(title2);
         this.add(topPanel, BorderLayout.NORTH);
 
-        // --- אזור מרכזי: רשת השדות ---
         JPanel gridPanel = new JPanel(new GridLayout(4, 4, 15, 15));
         gridPanel.setOpaque(false);
         gridPanel.setBorder(new EmptyBorder(10, 30, 20, 30));
@@ -72,7 +70,6 @@ public class SettingsPanel extends JPanel {
 
         this.add(gridPanel, BorderLayout.CENTER);
 
-        // --- אזור תחתון: כפתורים ---
         JPanel bottomContainer = new JPanel(new BorderLayout());
         bottomContainer.setOpaque(false);
 
@@ -97,7 +94,6 @@ public class SettingsPanel extends JPanel {
             BufferedImage mazeImage = MazeApiClient.fetchMazeImage(validWidth, validHeight);
 
             if (mazeImage != null) {
-                // העברה לפונקציית הפענוח החכמה (Sampling)
                 boolean[][] mazeLogic = parseMazePixels(mazeImage, validWidth, validHeight);
 
                 JFrame mazeWindow = new JFrame("The Maze");
@@ -110,22 +106,20 @@ public class SettingsPanel extends JPanel {
                 scrollPane.setBorder(null);
                 mazeWindow.add(scrollPane, BorderLayout.CENTER);
 
-                // הפאנל התחתון עם כפתורי בדיקת הפתרון וההאצה
                 JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
                 bottomPanel.setBackground(new Color(43, 43, 43));
 
                 JButton checkSolutionBtn = createButton("Check Solution");
                 JButton speedUpBtn = createButton("Speed Up ⏩");
-                speedUpBtn.setEnabled(false); // כבוי עד שהאנימציה מתחילה
+                speedUpBtn.setEnabled(false);
 
-                // האצת האנימציה בלחיצה
                 speedUpBtn.addActionListener(ev -> {
                     mazePanel.speedUpAnimation();
                 });
 
                 checkSolutionBtn.addActionListener(ev -> {
                     checkSolutionBtn.setEnabled(false);
-                    speedUpBtn.setEnabled(true); // מדליק את כפתור ההאצה
+                    speedUpBtn.setEnabled(true);
 
                     boolean isSolvable = mazePanel.solveAndAnimate(() -> {
                         checkSolutionBtn.setEnabled(true);
@@ -214,7 +208,6 @@ public class SettingsPanel extends JPanel {
         }
     }
 
-    // פונקציית פענוח התמונה (דגימה)
     private boolean[][] parseMazePixels(BufferedImage image, int logicalWidth, int logicalHeight) {
         boolean[][] maze = new boolean[logicalHeight][logicalWidth];
 

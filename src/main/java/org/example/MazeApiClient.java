@@ -11,7 +11,6 @@ import java.io.InputStream;
 
 public class MazeApiClient {
 
-
     private static final OkHttpClient client = new OkHttpClient();
 
     public static MazeConfig fetchConfig() {
@@ -26,7 +25,7 @@ public class MazeApiClient {
 
                 String responseData = response.body().string();
 
-                 JSONObject json = new JSONObject(responseData);
+                JSONObject json = new JSONObject(responseData);
 
                 MazeConfig config = new MazeConfig();
                 config.wallCellColor = MazeConfig.parseColor(json.getString("wallCellColor"));
@@ -45,7 +44,6 @@ public class MazeApiClient {
         return null;
     }
 
-    // פונקציה שמושכת את תמונת המבוך לפי המידות שהמשתמש בחר
     public static BufferedImage fetchMazeImage(int width, int height) {
         String url = "https://backend-qcf9.onrender.com/fm1/get-maze-image?width=" + width + "&height=" + height;
 
@@ -55,7 +53,6 @@ public class MazeApiClient {
 
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
-                // קריאת המידע מהשרת כזרם של בתים (Bytes) והמרתו לתמונה
                 InputStream inputStream = response.body().byteStream();
                 return ImageIO.read(inputStream);
             }
