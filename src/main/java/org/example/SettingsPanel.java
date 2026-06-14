@@ -11,7 +11,6 @@ public class SettingsPanel extends JPanel {
 
     private JTextField widthField;
     private JTextField heightField;
-    private JTextField nameField;
     private JTextField gridColorField;
     private JTextField wallColorField;
     private JTextField gridLinesField;
@@ -40,9 +39,6 @@ public class SettingsPanel extends JPanel {
         widthField = createTextField("30", true);
         gridPanel.add(widthField);
 
-        gridPanel.add(createLabel("Full name", 18, SwingConstants.LEFT));
-        nameField = createTextField("", true);
-        gridPanel.add(nameField);
 
         gridPanel.add(createLabel("Height", 18, SwingConstants.LEFT));
         heightField = createTextField("30", true);
@@ -77,8 +73,6 @@ public class SettingsPanel extends JPanel {
         buttonsPanel.setOpaque(false);
         buttonsPanel.setBorder(new EmptyBorder(0, 30, 15, 30));
 
-        JButton checkBtn = createButton("Check solution!");
-        checkBtn.setEnabled(false);
 
         JButton refreshBtn = createButton("Refresh!");
         refreshBtn.addActionListener(e -> loadConfigFromServer());
@@ -146,7 +140,7 @@ public class SettingsPanel extends JPanel {
             }
         });
 
-        buttonsPanel.add(checkBtn);
+
         buttonsPanel.add(refreshBtn);
         buttonsPanel.add(getMazeBtn);
 
