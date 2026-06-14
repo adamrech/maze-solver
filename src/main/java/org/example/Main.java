@@ -4,6 +4,8 @@ import javax.swing.*;
 public class Main {
     public static int WINDOW_WIDTH=700;
     public static int WINDOW_HEIGHT=600;
+    public static int SETTING_WINDOW_WIDTH=400;
+    public static int SETTING_WINDOW_HEIGHT=400;
 
     public static void main(String[] args) {
         try {
@@ -15,7 +17,7 @@ public class Main {
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        SettingsPanel settingsScene = new SettingsPanel(0, 0, 400, 400);
+        SettingsPanel settingsScene = new SettingsPanel(0, 0, SETTING_WINDOW_WIDTH, SETTING_WINDOW_HEIGHT);
         window.add(settingsScene);
 
         window.setVisible(true);
